@@ -1,0 +1,8 @@
+.movie-container {
+  margin: 4em;
+  color: white;
+}
+.movie-poster {
+  height: 50%;
+  width: 50%;
+}

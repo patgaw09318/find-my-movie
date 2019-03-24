@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import { asyncContainer, Typeahead } from "react-bootstrap-typeahead";
 import axios from "axios";
+import "./Search.css";
 const AsyncTypeahead = asyncContainer(Typeahead);
-
 const apiKey = "cfe422613b250f702980a3bbf9e90716";
 
 class Search extends Component {
@@ -11,7 +11,8 @@ class Search extends Component {
     allowNew: false,
     isLoading: false,
     multiple: false,
-    options: []
+    options: [],
+    movies: []
   };
 
   _handleSearch = query => {
@@ -26,16 +27,17 @@ class Search extends Component {
           api_key: apiKey,
           include_adult: true,
           page: 1,
-          language: "en-US",
+          language: "en-US", //pl-PL
           query: query
         }
       })
       .then(response => {
         const options = response.data.results.map(item => item["title"]);
-        console.log(options);
+        const movies = response.data.results;
         this.setState({
           isLoading: false,
-          options
+          options,
+          movies
         });
       })
       .catch(function(error) {
@@ -46,13 +48,18 @@ class Search extends Component {
     return (
       <div>
         <AsyncTypeahead
+          className="search"
           isLoading={this.state.isLoading}
           id="search"
           minLength={3}
-          placeholder="Choose a state..."
+          placeholder="Choose a movie..."
           onSearch={this._handleSearch}
           options={this.state.options}
-          onChange={value => console.log("selected: " + value)}
+          onChange={value => {
+            let movie = this.state.movies.find(x => x.title === value[0]);
+            this.props.handleOnChange(movie);
+          }}
+          useCache="true"
         />
       </div>
     );
