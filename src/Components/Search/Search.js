@@ -27,7 +27,7 @@ class Search extends Component {
           api_key: apiKey,
           include_adult: true,
           page: 1,
-          language: "en-US", //pl-PL
+          language: this.props.language,
           query: query
         }
       })

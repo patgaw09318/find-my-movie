@@ -3,6 +3,9 @@ import React from "react";
 import { Button, Popover, PopoverHeader, PopoverBody } from "reactstrap";
 import "./PopoverButton.css";
 
+const polish = "pl-PL";
+const english = "en-US";
+
 class PopoverButton extends React.Component {
   constructor(props) {
     super(props);
@@ -19,11 +22,18 @@ class PopoverButton extends React.Component {
     });
   }
 
+  getLanguageButtonStyle = language => {
+    return language === this.props.language
+      ? { backgroundColor: "#28a745" }
+      : { backgroundColor: "white" };
+  };
+
   render() {
+    let language = this.props.language;
     return (
       <div>
         <Button id="PopoverButton" className="PopoverButton" type="button">
-          English
+          {language === english ? "English" : "Polish"}
         </Button>
         <Popover
           className="border border-success"
@@ -36,8 +46,20 @@ class PopoverButton extends React.Component {
             Select language
           </PopoverHeader>
           <PopoverBody className="PopoverBody">
-            <button className="btn btnEnglish">English</button>
-            <button className="btn btnPolish">Polish</button>
+            <button
+              className="btn btnEnglish"
+              style={this.getLanguageButtonStyle(english)}
+              onClick={() => this.props.handleChangeLanguage(english)}
+            >
+              English
+            </button>
+            <button
+              className="btn btnPolish"
+              style={this.getLanguageButtonStyle(polish)}
+              onClick={() => this.props.handleChangeLanguage(polish)}
+            >
+              Polish
+            </button>
           </PopoverBody>
         </Popover>
       </div>

@@ -1,10 +1,11 @@
 .PopoverButton {
-  background-color: #222;
+  background-color: #28a745;
+  color: #222;
 }
 
 .PopoverButton:hover {
-  background-color: #28a745;
-  color: #222;
+  background-color: #222;
+  color: #28a745;
 }
 
 .PopoverHeader {

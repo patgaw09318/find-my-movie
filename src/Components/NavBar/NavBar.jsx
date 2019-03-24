@@ -6,9 +6,14 @@ class NavBar extends Component {
   state = {};
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-        <div className="navbar-brand">Find my Movie</div>
-        <PopoverButton />
+      <nav className="navbar  bg-success">
+        <div className="navbar-brand navbar-title">
+          <h2>Find my Movie</h2>
+        </div>
+        <PopoverButton
+          handleChangeLanguage={this.props.handleChangeLanguage}
+          language={this.props.language}
+        />
       </nav>
     );
   }
