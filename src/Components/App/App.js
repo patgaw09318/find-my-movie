@@ -49,7 +49,10 @@ class App extends Component {
             handleOnChange={this.setMovie}
             language={this.state.language}
           />
-          <MovieContainer movie={this.state.movie} />
+          <MovieContainer
+            movie={this.state.movie}
+            language={this.state.language}
+          />
         </div>
       </>
     );

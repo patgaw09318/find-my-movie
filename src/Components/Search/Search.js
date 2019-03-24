@@ -59,7 +59,7 @@ class Search extends Component {
             let movie = this.state.movies.find(x => x.title === value[0]);
             this.props.handleOnChange(movie);
           }}
-          useCache="true"
+          useCache={true}
         />
       </div>
     );

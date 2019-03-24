@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import "./MovieContainer.css";
 
 class MovieContainer extends Component {
+  state = {};
   render() {
-    let { title, poster_path, overview } = this.props.movie;
+    const { movie, language } = this.props;
+    const { title, poster_path, overview } = movie;
     return (
       <div className="movie-container">
         <div className="movie-title">
@@ -11,9 +13,9 @@ class MovieContainer extends Component {
         </div>
         <div className="row">
           <img
-            className="movie-poster img-fluid col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+            className="poster img-fluid col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
             src={"https://image.tmdb.org/t/p/w500/" + poster_path}
-            alt="poster"
+            alt="poster not loaded!"
           />
           <div className="container-body text-justify col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
             <span>{overview}</span>

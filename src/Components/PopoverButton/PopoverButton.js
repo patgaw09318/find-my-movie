@@ -32,7 +32,16 @@ class PopoverButton extends React.Component {
     let language = this.props.language;
     return (
       <div>
-        <Button id="PopoverButton" className="PopoverButton" type="button">
+        <Button
+          style={
+            this.state.popoverOpen
+              ? { backgroundColor: "#222", color: "#28a745" }
+              : {}
+          }
+          id="PopoverButton"
+          className="PopoverButton"
+          type="button"
+        >
           {language === english ? "English" : "Polish"}
         </Button>
         <Popover
@@ -41,6 +50,7 @@ class PopoverButton extends React.Component {
           isOpen={this.state.popoverOpen}
           target="PopoverButton"
           toggle={this.toggle}
+          hideArrow={true}
         >
           <PopoverHeader className="PopoverHeader">
             Select language

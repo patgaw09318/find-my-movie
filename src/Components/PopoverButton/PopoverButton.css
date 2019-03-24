@@ -1,4 +1,5 @@
 .PopoverButton {
+  width: 5em;
   background-color: #28a745;
   color: #222;
 }
@@ -13,14 +14,21 @@
 }
 
 .btnEnglish {
-  background-color: #28a745;
+  border-color: #222;
+  margin-right: 0.6em;
+}
+.btnPolish {
+  border-color: #222;
 }
 
 .btnEnglish:hover {
-  background-color: #222;
-  color: white;
+  background-color: #222 !important;
+  color: #28a745;
 }
 .btnPolish:hover {
-  background-color: #222;
-  color: white;
+  background-color: #222 !important;
+  color: #28a745;
+}
+.popover {
+  box-shadow: 3px -2px 4px #136526;
 }

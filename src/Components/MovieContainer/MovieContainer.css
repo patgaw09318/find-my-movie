@@ -2,14 +2,15 @@
   margin: 3%;
   color: white;
 }
+
 h1 {
   padding: 1%;
 }
 
-.movie-poster {
+.poster {
   height: 50%;
   width: 50%;
-  border-radius: 0.3em;
+  border-radius: 0.5em !important;
 }
 .container-body {
   padding: 1%;
