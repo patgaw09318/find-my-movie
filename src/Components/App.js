@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
-import Search from "../Search/Search";
-import NavBar from "../NavBar/NavBar";
-import MovieContainer from "../MovieContainer/MovieContainer";
-const polish = "pl-PL";
-const english = "en-US";
+import Search from "./Search";
+import NavBar from "./NavBar";
+import MovieContainer from "./MovieContainer";
+import Config from "./config";
+
+const polish = Config.language.polish;
+const english = Config.language.english;
 
 class App extends Component {
   state = {

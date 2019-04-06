@@ -1,10 +1,12 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 import React from "react";
 import { Button, Popover, PopoverHeader, PopoverBody } from "reactstrap";
+import Config from "./config";
+import Styles from "./styles";
 import "./PopoverButton.css";
-
-const polish = "pl-PL";
-const english = "en-US";
+const styles = Styles.PopoverButton;
+const polish = Config.language.polish;
+const english = Config.language.english;
 
 class PopoverButton extends React.Component {
   constructor(props) {
@@ -33,11 +35,10 @@ class PopoverButton extends React.Component {
     return (
       <div>
         <Button
-          style={
-            this.state.popoverOpen
-              ? { backgroundColor: "#222", color: "#28a745" }
-              : {}
-          }
+          style={{
+            ...styles.popoverButton,
+            ...(this.state.popoverOpen && styles.popoverOpen)
+          }}
           id="PopoverButton"
           className="PopoverButton"
           type="button"
@@ -52,20 +53,24 @@ class PopoverButton extends React.Component {
           toggle={this.toggle}
           hideArrow={true}
         >
-          <PopoverHeader className="PopoverHeader">
-            Select language
-          </PopoverHeader>
+          <PopoverHeader style={styles.header}>Select language</PopoverHeader>
           <PopoverBody className="PopoverBody">
             <button
               className="btn btnEnglish"
-              style={this.getLanguageButtonStyle(english)}
+              style={{
+                ...this.getLanguageButtonStyle(english),
+                ...styles.btnEnglish
+              }}
               onClick={() => this.props.handleChangeLanguage(english)}
             >
               English
             </button>
             <button
               className="btn btnPolish"
-              style={this.getLanguageButtonStyle(polish)}
+              style={{
+                ...this.getLanguageButtonStyle(polish),
+                ...styles.btnPolish
+              }}
               onClick={() => this.props.handleChangeLanguage(polish)}
             >
               Polish

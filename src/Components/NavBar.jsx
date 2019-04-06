@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import "./NavBar.css";
-import PopoverButton from "../PopoverButton/PopoverButton";
+import PopoverButton from "./PopoverButton";
+import Styles from "./styles";
+
+const styles = Styles.Navbar;
 
 class NavBar extends Component {
   state = {};
   render() {
     return (
-      <nav className="navbar  bg-success">
-        <div className="navbar-brand navbar-title">
+      <nav className="bg-success" styles={styles.main}>
+        <div className="navbar-brand" styles={styles.title}>
           <h2>Find my Movie</h2>
         </div>
         <PopoverButton

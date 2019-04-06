@@ -2,9 +2,13 @@ import React, { Component } from "react";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import { asyncContainer, Typeahead } from "react-bootstrap-typeahead";
 import axios from "axios";
-import "./Search.css";
+import Config from "./config";
+import Styles from "./styles";
+
 const AsyncTypeahead = asyncContainer(Typeahead);
-const apiKey = "cfe422613b250f702980a3bbf9e90716";
+const apiKey = Config.movieApi.authorization.apiKey;
+const searchMovieUrl = Config.movieApi.urls.searchMovie;
+const styles = Styles.Search;
 
 class Search extends Component {
   state = {
@@ -22,7 +26,7 @@ class Search extends Component {
 
   makeAndHandleRequest = query => {
     axios
-      .get("https://api.themoviedb.org/3/search/movie", {
+      .get(searchMovieUrl, {
         params: {
           api_key: apiKey,
           include_adult: true,
@@ -48,7 +52,7 @@ class Search extends Component {
     return (
       <div>
         <AsyncTypeahead
-          className="search"
+          Styles={styles.SearchBar}
           isLoading={this.state.isLoading}
           id="search"
           minLength={3}

@@ -1,0 +1,13 @@
+.PopoverButton:hover {
+  background-color: #222 !important;
+  color: #28a745 !important;
+}
+
+.btnEnglish:hover {
+  background-color: #222 !important;
+  color: #28a745;
+}
+.btnPolish:hover {
+  background-color: #222 !important;
+  color: #28a745;
+}
