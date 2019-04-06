@@ -4,6 +4,9 @@ var Config = {
     english: "en-US"
   },
   movieApi: {
+    default: {
+      movieName: "Avengers: Endgame"
+    },
     urls: {
       searchMovie: "https://api.themoviedb.org/3/search/movie",
       poster: "https://image.tmdb.org/t/p/w500/"

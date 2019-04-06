@@ -4,7 +4,9 @@ import Search from "./Search";
 import NavBar from "./NavBar";
 import MovieContainer from "./MovieContainer";
 import Config from "../tools/config";
+import Api from "../tools/api";
 
+const api = new Api();
 const polish = Config.language.polish;
 const english = Config.language.english;
 
@@ -12,10 +14,23 @@ class App extends Component {
   state = {
     language: english,
     movie: {
-      id: "483453",
-      title: "The Seven Deadly Sins Movie",
-      poster_path: "r6pPUVUKU5eIpYj4oEzidk5ZibB.jpg"
+      id: null,
+      title: null,
+      poster_path: null
     }
+  };
+  constructor() {
+    super();
+    this.getMovie();
+  }
+
+  getMovie = async () => {
+    let response = await api.searchMovie(
+      Config.movieApi.default.movieName,
+      english
+    );
+    const movie = response.results[0];
+    this.setMovie(movie);
   };
 
   setMovie = _movie => {
