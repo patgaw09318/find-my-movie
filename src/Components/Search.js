@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import { asyncContainer, Typeahead } from "react-bootstrap-typeahead";
 import axios from "axios";
-import Config from "./config";
-import Styles from "./styles";
+import Config from "../tools/config";
+import Styles from "../tools/styles";
 
 const AsyncTypeahead = asyncContainer(Typeahead);
 const apiKey = Config.movieApi.authorization.apiKey;
@@ -52,7 +52,7 @@ class Search extends Component {
     return (
       <div>
         <AsyncTypeahead
-          Styles={styles.SearchBar}
+          style={styles.SearchBar}
           isLoading={this.state.isLoading}
           id="search"
           minLength={3}

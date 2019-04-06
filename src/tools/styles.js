@@ -9,10 +9,16 @@ const Styles = {
   },
   Navbar: {
     main: {
-      width: "100%"
+      width: "100%",
+      padding: "1%"
+    },
+    languageButton: {
+      float: "right",
+      padding: "1%"
     },
     title: {
-      color: ["#222", true]
+      color: ["#222", true],
+      padding: "2%"
     }
   },
   MovieContainer: {

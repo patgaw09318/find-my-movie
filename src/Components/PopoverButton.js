@@ -1,8 +1,8 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 import React from "react";
 import { Button, Popover, PopoverHeader, PopoverBody } from "reactstrap";
-import Config from "./config";
-import Styles from "./styles";
+import Config from "../tools/config";
+import Styles from "../tools/styles";
 import "./PopoverButton.css";
 const styles = Styles.PopoverButton;
 const polish = Config.language.polish;

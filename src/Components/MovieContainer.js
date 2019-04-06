@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Config from "./config";
-import Styles from "./styles";
+import Config from "../tools/config";
+import Styles from "../tools/styles";
 const posterUrl = Config.movieApi.urls.poster;
 const styles = Styles.MovieContainer;
 
