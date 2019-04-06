@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import { asyncContainer, Typeahead } from "react-bootstrap-typeahead";
-import axios from "axios";
-import Config from "../tools/config";
+import Api from "../tools/api";
 import Styles from "../tools/styles";
 
 const AsyncTypeahead = asyncContainer(Typeahead);
-const apiKey = Config.movieApi.authorization.apiKey;
-const searchMovieUrl = Config.movieApi.urls.searchMovie;
 const styles = Styles.Search;
-
+const api = new Api();
 class Search extends Component {
   state = {
     allowNew: false,
@@ -24,29 +21,13 @@ class Search extends Component {
     this.makeAndHandleRequest(query);
   };
 
-  makeAndHandleRequest = query => {
-    axios
-      .get(searchMovieUrl, {
-        params: {
-          api_key: apiKey,
-          include_adult: true,
-          page: 1,
-          language: this.props.language,
-          query: query
-        }
-      })
-      .then(response => {
-        const options = response.data.results.map(item => item["title"]);
-        const movies = response.data.results;
-        this.setState({
-          isLoading: false,
-          options,
-          movies
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+  makeAndHandleRequest = async query => {
+    const response = await api.searchMovie(query, this.props.language);
+    this.setState({
+      isLoading: false,
+      options: response.results.map(item => item["title"]),
+      movies: response.results
+    });
   };
   render() {
     return (
