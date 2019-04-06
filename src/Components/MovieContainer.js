@@ -18,7 +18,7 @@ class MovieContainer extends Component {
           <img
             className="img-fluid col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
             style={styles.poster}
-            src={posterUrl + poster_path}
+            src={poster_path != null ? posterUrl + poster_path : null}
             alt="poster not loaded!"
           />
           <div

@@ -6,29 +6,27 @@ import MovieContainer from "./MovieContainer";
 import Config from "../tools/config";
 import Api from "../tools/api";
 
-const api = new Api();
 const polish = Config.language.polish;
 const english = Config.language.english;
+const defaultValues = Config.movieApi.default;
 
 class App extends Component {
-  state = {
-    language: english,
-    movie: {
-      id: null,
-      title: null,
-      poster_path: null
-    }
-  };
   constructor() {
     super();
-    this.getMovie();
+    this.state = {
+      language: defaultValues.language,
+      movie: {
+        id: null,
+        title: null,
+        poster_path: null
+      }
+    };
+    this.api = new Api();
+    this.getMovie(defaultValues.movieName, defaultValues.language);
   }
 
-  getMovie = async () => {
-    let response = await api.searchMovie(
-      Config.movieApi.default.movieName,
-      english
-    );
+  getMovie = async (name, language) => {
+    let response = await this.api.searchMovie(name, language);
     const movie = response.results[0];
     this.setMovie(movie);
   };
@@ -46,7 +44,8 @@ class App extends Component {
   setLanguage = _language => {
     if (_language === polish || _language === english) {
       const language = _language;
-      const movie = this.state.movie;
+      const name = this.state.movie.title;
+      const movie = this.getMovie(name, language);
       this.setState({ movie, language });
     } else {
       console.log("Error: Wrong language!");

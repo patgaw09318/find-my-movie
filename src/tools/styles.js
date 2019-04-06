@@ -14,7 +14,8 @@ const Styles = {
     },
     languageButton: {
       float: "right",
-      padding: "1%"
+      marginRight: "1em",
+      marginTop: "0.5%"
     },
     title: {
       color: ["#222", true],

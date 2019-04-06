@@ -6,15 +6,19 @@ import Styles from "../tools/styles";
 
 const AsyncTypeahead = asyncContainer(Typeahead);
 const styles = Styles.Search;
-const api = new Api();
+
 class Search extends Component {
-  state = {
-    allowNew: false,
-    isLoading: false,
-    multiple: false,
-    options: [],
-    movies: []
-  };
+  constructor() {
+    super();
+    this.state = {
+      allowNew: false,
+      isLoading: false,
+      multiple: false,
+      options: [],
+      movies: []
+    };
+    this.api = new Api();
+  }
 
   _handleSearch = query => {
     this.setState({ isLoading: true });
@@ -22,7 +26,7 @@ class Search extends Component {
   };
 
   makeAndHandleRequest = async query => {
-    const response = await api.searchMovie(query, this.props.language);
+    const response = await this.api.searchMovie(query, this.props.language);
     this.setState({
       isLoading: false,
       options: response.results.map(item => item["title"]),
