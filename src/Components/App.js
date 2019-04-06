@@ -22,12 +22,20 @@ class App extends Component {
       }
     };
     this.api = new Api();
-    this.getMovie(defaultValues.movieName, defaultValues.language);
+    this.getMovie(defaultValues.movieId, defaultValues.language);
   }
 
-  getMovie = async (name, language) => {
-    let response = await this.api.searchMovie(name, language);
-    const movie = response.results[0];
+  selectMovie = _movie => {
+    if (_movie !== null && _movie !== undefined) {
+      this.getMovie(_movie.id);
+    } else {
+      console.log("selectMovie error!" + _movie);
+    }
+  };
+
+  getMovie = async (id, language) => {
+    let movie = await this.api.getMovie(id, language);
+    console.log(movie);
     this.setMovie(movie);
   };
 
@@ -43,9 +51,8 @@ class App extends Component {
 
   setLanguage = _language => {
     if (_language === polish || _language === english) {
+      let movie = this.getMovie(this.state.movie.id, _language);
       const language = _language;
-      const name = this.state.movie.title;
-      const movie = this.getMovie(name, language);
       this.setState({ movie, language });
     } else {
       console.log("Error: Wrong language!");
@@ -61,7 +68,7 @@ class App extends Component {
         />
         <div className="container container-fluid">
           <Search
-            handleOnChange={this.setMovie}
+            handleOnChange={this.selectMovie}
             language={this.state.language}
           />
           <MovieContainer

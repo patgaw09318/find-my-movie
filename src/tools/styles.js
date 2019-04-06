@@ -39,6 +39,9 @@ const Styles = {
     },
     body: {
       padding: "1%"
+    },
+    value: {
+      color: "#28a745"
     }
   },
   PopoverButton: {

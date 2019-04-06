@@ -8,11 +8,12 @@ var Config = {
   },
   movieApi: {
     default: {
-      movieName: "Avengers: Endgame",
+      movieId: "299534",
       language: english
     },
     urls: {
       searchMovie: "https://api.themoviedb.org/3/search/movie",
+      getMovieUrl: "https://api.themoviedb.org/3/movie",
       poster: "https://image.tmdb.org/t/p/w500/"
     },
     authorization: {
