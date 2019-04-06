@@ -27,7 +27,7 @@ class App extends Component {
 
   selectMovie = _movie => {
     if (_movie !== null && _movie !== undefined) {
-      this.getMovie(_movie.id);
+      this.getMovie(_movie.id, this.state.language);
     } else {
       console.log("selectMovie error!" + _movie);
     }

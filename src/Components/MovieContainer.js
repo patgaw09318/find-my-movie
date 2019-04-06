@@ -14,12 +14,17 @@ class MovieContainer extends Component {
       overview,
       release_date,
       popularity,
-      original_title
+      original_title,
+      tagline
     } = movie;
     return (
       <div style={styles.main}>
-        <div style={styles.title}>
-          <h1>{title}</h1>
+        <div>
+          <h1 style={styles.title}>
+            {title}
+            <br />
+          </h1>
+          <h3 style={styles.subTitle}>{tagline}</h3>
         </div>
         <div className="row">
           <img
@@ -43,7 +48,7 @@ class MovieContainer extends Component {
                 </tr>
                 <tr>
                   <td>
-                    <span>Orginal title:</span>
+                    <span>Original title:</span>
                   </td>
                   <td>
                     <span style={styles.value}>{original_title}</span>

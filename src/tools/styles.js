@@ -28,9 +28,11 @@ const Styles = {
       color: "white"
     },
     title: {
-      padding: "1%",
-
       color: "green"
+    },
+    subTitle: {
+      padding: "1%",
+      color: "white"
     },
     poster: {
       height: "50%",
