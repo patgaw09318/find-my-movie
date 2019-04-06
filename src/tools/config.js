@@ -1,5 +1,8 @@
 const english = "en-US";
 const polish = "pl-PL";
+const theMovieDbUrl = "https://api.themoviedb.org/3/";
+const posterUrl = "https://image.tmdb.org/t/p/w500/";
+const apiKey = "d0a661c7bf34b34b6c187d531c56b797";
 
 var Config = {
   language: {
@@ -12,12 +15,12 @@ var Config = {
       language: english
     },
     urls: {
-      searchMovie: "https://api.themoviedb.org/3/search/movie",
-      getMovieUrl: "https://api.themoviedb.org/3/movie",
-      poster: "https://image.tmdb.org/t/p/w500/"
+      searchMovie: theMovieDbUrl + "search/movie",
+      getMovieUrl: theMovieDbUrl + "movie",
+      poster: posterUrl
     },
     authorization: {
-      apiKey: "d0a661c7bf34b34b6c187d531c56b797"
+      apiKey
     }
   }
 };
