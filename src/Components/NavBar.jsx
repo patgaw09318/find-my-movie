@@ -16,6 +16,7 @@ class NavBar extends Component {
           <PopoverButton
             handleChangeLanguage={this.props.handleChangeLanguage}
             language={this.props.language}
+            Translation={this.props.Translation}
           />
         </div>
       </nav>

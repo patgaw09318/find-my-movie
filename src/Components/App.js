@@ -5,6 +5,7 @@ import NavBar from "./NavBar";
 import MovieContainer from "./MovieContainer";
 import Config from "../tools/config";
 import Api from "../tools/api";
+import Translation from "../tools/translation";
 
 const polish = Config.language.polish;
 const english = Config.language.english;
@@ -35,7 +36,6 @@ class App extends Component {
 
   getMovie = async (id, language) => {
     let movie = await this.api.getMovie(id, language);
-    console.log(movie);
     this.setMovie(movie);
   };
 
@@ -51,6 +51,7 @@ class App extends Component {
 
   setLanguage = _language => {
     if (_language === polish || _language === english) {
+      Translation.changeLanguage(_language === polish ? "polish" : "english");
       let movie = this.getMovie(this.state.movie.id, _language);
       const language = _language;
       this.setState({ movie, language });
@@ -65,16 +66,14 @@ class App extends Component {
         <NavBar
           handleChangeLanguage={this.setLanguage}
           language={this.state.language}
+          Translation={Translation}
         />
         <div className="container container-fluid">
           <Search
             handleOnChange={this.selectMovie}
             language={this.state.language}
           />
-          <MovieContainer
-            movie={this.state.movie}
-            language={this.state.language}
-          />
+          <MovieContainer movie={this.state.movie} Translation={Translation} />
         </div>
       </>
     );

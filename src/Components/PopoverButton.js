@@ -31,6 +31,7 @@ class PopoverButton extends React.Component {
 
   render() {
     let language = this.props.language;
+    let Translation = this.props.Translation;
     return (
       <div>
         <Button
@@ -42,7 +43,9 @@ class PopoverButton extends React.Component {
           className="PopoverButton"
           type="button"
         >
-          {language === english ? "English" : "Polish"}
+          {language === english
+            ? Translation.t("English")
+            : Translation.t("Polish")}
         </Button>
         <Popover
           className="border border-success"
@@ -52,7 +55,9 @@ class PopoverButton extends React.Component {
           toggle={this.toggle}
           hideArrow={true}
         >
-          <PopoverHeader style={styles.header}>Select language</PopoverHeader>
+          <PopoverHeader style={styles.header}>
+            {Translation.t("SelectLanguage")}
+          </PopoverHeader>
           <PopoverBody className="PopoverBody">
             <button
               className="btn btnEnglish"
@@ -62,7 +67,7 @@ class PopoverButton extends React.Component {
               }}
               onClick={() => this.props.handleChangeLanguage(english)}
             >
-              English
+              {Translation.t("English")}
             </button>
             <button
               className="btn btnPolish"
@@ -72,7 +77,7 @@ class PopoverButton extends React.Component {
               }}
               onClick={() => this.props.handleChangeLanguage(polish)}
             >
-              Polish
+              {Translation.t("Polish")}
             </button>
           </PopoverBody>
         </Popover>

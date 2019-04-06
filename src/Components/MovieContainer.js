@@ -5,9 +5,44 @@ const posterUrl = Config.movieApi.urls.poster;
 const styles = Styles.MovieContainer;
 
 class MovieContainer extends Component {
-  state = {};
+  getLinkRow = (title, link) => {
+    return (
+      link !== undefined &&
+      link != null && (
+        <tr>
+          <td colSpan="2">
+            <span>
+              <a href={link}>{title}</a>
+            </span>
+          </td>
+        </tr>
+      )
+    );
+  };
+  addTableRow = (title, content) => {
+    return (
+      <tr>
+        <td>
+          <span>{title}</span>
+        </td>
+        <td>
+          <span style={styles.value}> {content}</span>
+        </td>
+      </tr>
+    );
+  };
+  addSingleColumnRow = content => {
+    return (
+      <tr>
+        <td colSpan="2">
+          <span style={styles.value}>{content}</span>
+          <br />
+        </td>
+      </tr>
+    );
+  };
   render() {
-    const { movie, language } = this.props;
+    const { movie, Translation } = this.props;
     const {
       title,
       poster_path,
@@ -15,8 +50,17 @@ class MovieContainer extends Component {
       release_date,
       popularity,
       original_title,
-      tagline
+      tagline,
+      homepage,
+      runtime,
+      revenue,
+      vote_average,
+      vote_count,
+      genres
     } = movie;
+
+    let genresString =
+      genres !== undefined && genres.map(genre => genre.name).join(", ");
     return (
       <div style={styles.main}>
         <div>
@@ -42,34 +86,22 @@ class MovieContainer extends Component {
                 <tr>
                   <td colSpan="2">
                     <span>&emsp;&emsp;{overview}</span>
-                    <br />
-                    <br />
                   </td>
                 </tr>
-                <tr>
-                  <td>
-                    <span>Original title:</span>
-                  </td>
-                  <td>
-                    <span style={styles.value}>{original_title}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span>Release date:</span>
-                  </td>
-                  <td>
-                    <span style={styles.value}> {release_date}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span>Popularity:</span>
-                  </td>
-                  <td>
-                    <span style={styles.value}>{popularity}</span>
-                  </td>
-                </tr>
+                <br />
+                {this.addSingleColumnRow(genresString)}
+                <br />
+                {this.addTableRow(
+                  Translation.t("OriginalTitle"),
+                  original_title
+                )}
+                {this.addTableRow("Release date:", release_date)}
+                {this.addTableRow(Translation.t("Popularity"), popularity)}
+                {this.addTableRow("runtime", runtime)}
+                {this.addTableRow("revenue", revenue)}
+                {this.addTableRow("vote_average", vote_average)}
+                {this.addTableRow("vote_count", vote_count)}
+                {this.getLinkRow("homepage", homepage)}
               </tbody>
             </table>
           </div>
