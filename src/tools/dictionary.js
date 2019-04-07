@@ -10,7 +10,9 @@ const Dictionary = {
       ReleaseDate: "Release date",
       Runtime: "Runtime",
       Revenue: "Revenue",
-      Vote_average_count: "Vote/Count"
+      Vote_average_count: "Vote/Count",
+      Budget: "Budget",
+      NoDescription: "No description"
     }
   },
   polish: {
@@ -24,7 +26,9 @@ const Dictionary = {
       ReleaseDate: "Data wydania",
       Runtime: "Czas trwania",
       Revenue: "Dochód",
-      Vote_average_count: "Ocena/Liczba głosów"
+      Vote_average_count: "Ocena/Liczba głosów",
+      Budget: "Budżet",
+      NoDescription: "Brak opisu"
     }
   }
 };

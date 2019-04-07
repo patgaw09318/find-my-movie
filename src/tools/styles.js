@@ -12,7 +12,7 @@ const Styles = {
       width: "50%",
       position: "center",
       marginLeft: "25%",
-      marginTop: "8%"
+      marginTop: "10%"
     }
   },
   Navbar: {
@@ -52,6 +52,15 @@ const Styles = {
     },
     value: {
       color: "#28a745"
+    },
+    productionImage: {
+      width: "30%",
+      display: "initial",
+      padding: "1em"
+    },
+    productionText: {
+      display: "inline",
+      padding: "1em"
     }
   },
   PopoverButton: {

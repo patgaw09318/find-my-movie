@@ -37,6 +37,7 @@ class MovieContainer extends Component {
         <td colSpan="2">
           <span style={styles.value}>{content}</span>
           <br />
+          <br />
         </td>
       </tr>
     );
@@ -57,7 +58,9 @@ class MovieContainer extends Component {
       revenue,
       vote_average,
       vote_count,
-      genres
+      genres,
+      production_companies,
+      budget
     } = movie;
 
     let genresString =
@@ -93,12 +96,15 @@ class MovieContainer extends Component {
               <tbody>
                 <tr>
                   <td colSpan="2">
-                    <span>&emsp;&emsp;{overview}</span>
+                    <span>
+                      &emsp;&emsp;
+                      {overview !== null && overview !== undefined
+                        ? overview
+                        : Translation.t("NoDescription")}
+                    </span>
                   </td>
                 </tr>
-                <br />
                 {this.addSingleColumnRow(genresString)}
-                <br />
                 {this.addTableRow(
                   Translation.t("OriginalTitle"),
                   original_title
@@ -107,6 +113,10 @@ class MovieContainer extends Component {
                 {this.addTableRow(Translation.t("Popularity"), popularity)}
                 {this.addTableRow(Translation.t("Runtime"), runtime + " min")}
                 {this.addTableRow(
+                  Translation.t("Budget"),
+                  formatter.format(budget)
+                )}
+                {this.addTableRow(
                   Translation.t("Revenue"),
                   formatter.format(revenue)
                 )}
@@ -114,7 +124,32 @@ class MovieContainer extends Component {
                   Translation.t("Vote_average_count"),
                   `${vote_average}/${vote_count}`
                 )}
-                {this.getLinkRow("homepage", homepage)}
+                {this.addSingleColumnRow(
+                  production_companies !== undefined &&
+                    production_companies.map(studio =>
+                      studio.logo_path !== undefined &&
+                      studio.logo_path !== null ? (
+                        <img
+                          key={studio.id}
+                          style={styles.productionImage}
+                          alt={studio.name}
+                          src={posterUrl + studio.logo_path}
+                          title={studio.name}
+                        />
+                      ) : (
+                        <div
+                          key={studio.id}
+                          style={styles.productionText}
+                          title={studio.name}
+                        >
+                          {studio.name}
+                        </div>
+                      )
+                    )
+                )}
+                {homepage !== undefined &&
+                  homepage !== null &&
+                  this.getLinkRow("homepage", homepage)}
               </tbody>
             </table>
           </div>
