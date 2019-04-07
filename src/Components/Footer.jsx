@@ -4,51 +4,48 @@ import Config from "../tools/config";
 import "./styles.css";
 
 const styles = Styles.Footer;
+let getFooterImageLink = (_href, _title, _img, _alt) => {
+  return (
+    <a
+      style={styles.bar}
+      href={_href}
+      title={_title}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img style={styles.image} src={_img} alt="_alt" />
+    </a>
+  );
+};
 
 function Footer() {
   return (
     <footer style={styles.main}>
       <div>
-        <a
-          style={styles.bar}
-          href={Config.application.repositoryUrl}
-          title="GitHub repository"
-        >
-          <img
-            style={styles.image}
-            src={Config.application.repositoryImage}
-            alt="GitHub"
-          />
-        </a>
-        <a
-          style={styles.bar}
-          href={Config.application.linkedInUrl}
-          title="LinkedIn"
-        >
-          <img
-            style={styles.image}
-            src={Config.application.linkedInImage}
-            alt="LinkedIn"
-          />
-        </a>
-        <div style={styles.bar} title={Config.application.mailAddress}>
-          <img
-            style={styles.image}
-            src={Config.application.mailImage}
-            alt="Mail"
-          />
-        </div>
-        <a
-          style={styles.bar}
-          href={Config.application.movieDbUrl}
-          title="MovieDb"
-        >
-          <img
-            style={styles.image}
-            src={Config.application.movieDbImage}
-            alt="MovieDb"
-          />
-        </a>
+        {getFooterImageLink(
+          Config.application.repositoryUrl,
+          "GitHub repository",
+          Config.application.repositoryImage,
+          "GitHub"
+        )}
+        {getFooterImageLink(
+          Config.application.linkedInUrl,
+          "LinkedIn",
+          Config.application.linkedInImage,
+          "LinkedIn"
+        )}
+        {getFooterImageLink(
+          `mailto:${Config.application.mailAddress}`,
+          Config.application.mailAddress,
+          Config.application.mailImage,
+          "Mail"
+        )}
+        {getFooterImageLink(
+          Config.application.movieDbUrl,
+          "MovieDb",
+          Config.application.movieDbImage,
+          "MovieDb"
+        )}
       </div>
       <div style={styles.text}>@2019 Patryk Gawryszewski</div>
     </footer>

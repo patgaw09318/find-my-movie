@@ -32,7 +32,8 @@ var Config = {
     mailImage: "images/mail-logo.png",
     movieDbImage: "images/movieDb-logo.svg",
     movieDbUrl: "https://www.themoviedb.org/",
-    closeIcon: "images/close-icon.png"
+    closeIcon: "images/close-icon.png",
+    mobileMenuIcon: "images/mobile-menu-icon.png"
   }
 };
 

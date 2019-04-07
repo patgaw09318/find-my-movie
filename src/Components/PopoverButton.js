@@ -13,7 +13,8 @@ class PopoverButton extends React.Component {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = {
-      popoverOpen: false
+      popoverOpen: false,
+      mobileMenuOpen: false
     };
   }
 
@@ -21,7 +22,8 @@ class PopoverButton extends React.Component {
 
   toggle() {
     this.setState({
-      popoverOpen: !this.state.popoverOpen
+      popoverOpen: !this.state.popoverOpen,
+      mobileMenuOpen: this.state.mobileMenuOpen
     });
   }
 
@@ -60,30 +62,84 @@ class PopoverButton extends React.Component {
       </button>
     );
   };
+  getLanguageButtons = () => {
+    return (
+      <>
+        {this.getEnglishButton()}
+        {this.getPolishButton()}
+      </>
+    );
+  };
+  getPopoverButton = () => {
+    return (
+      <Button
+        style={{
+          ...styles.popoverButton,
+          ...(this.state.popoverOpen && styles.popoverOpen)
+        }}
+        id="PopoverButton"
+        className="PopoverButton mobileHide"
+        type="button"
+      >
+        {this.props.language === english
+          ? this.Translation.t("English")
+          : this.Translation.t("Polish")}
+      </Button>
+    );
+  };
+
+  getMobilePopoverButton = () => {
+    return (
+      <div
+        className="mobileShow desktopHide"
+        onClick={() =>
+          this.setState({
+            popoverOpen: this.state.popoverOpen,
+            mobileMenuOpen: !this.state.mobileMenuOpen
+          })
+        }
+      >
+        <img
+          className="mobileMenuImage"
+          alt="menu"
+          src={Config.application.mobileMenuIcon}
+        />
+      </div>
+    );
+  };
+
+  getMobileMenu = () => {
+    return (
+      this.state.mobileMenuOpen && (
+        <div className="mobileMenu mobileShow desktopHide">
+          {this.getLanguageButtons()}
+          <img
+            src={Config.application.closeIcon}
+            alt="close button"
+            onClick={() => {
+              if (this.state.mobileMenuOpen) {
+                this.setState({
+                  popoverOpen: this.state.popoverOpen,
+                  mobileMenuOpen: false
+                });
+              }
+            }}
+          />
+        </div>
+      )
+    );
+  };
+
   render() {
-    let language = this.props.language;
     return (
       <div style={styles.main}>
-        <Button
-          style={{
-            ...styles.popoverButton,
-            ...(this.state.popoverOpen && styles.popoverOpen)
-          }}
-          id="PopoverButton"
-          className="PopoverButton mobileHide"
-          type="button"
-        >
-          {language === english
-            ? this.Translation.t("English")
-            : this.Translation.t("Polish")}
-        </Button>
-        <div className="mobileShow desktopHide">
-          {this.getEnglishButton()}
-          {this.getPolishButton()}
-        </div>
+        {this.getPopoverButton()}
+        {this.getMobilePopoverButton()}
+        {this.getMobileMenu()}
         <Popover
           className="border border-success"
           placement="bottom"
+          style={styles.popoverBody}
           isOpen={this.state.popoverOpen}
           target="PopoverButton"
           toggle={this.toggle}
@@ -94,14 +150,18 @@ class PopoverButton extends React.Component {
             <div
               className="btnExit"
               style={styles.exit}
-              onClick={() => this.setState({ popoverOpen: false })}
+              onClick={() =>
+                this.setState({
+                  popoverOpen: false,
+                  mobileMenuOpen: this.state.mobileMenuOpen
+                })
+              }
             >
               x
             </div>
           </PopoverHeader>
           <PopoverBody className="PopoverBody">
-            {this.getEnglishButton()}
-            {this.getPolishButton()}
+            {this.getLanguageButtons()}
           </PopoverBody>
         </Popover>
       </div>

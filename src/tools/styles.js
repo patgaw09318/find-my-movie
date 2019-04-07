@@ -72,7 +72,11 @@ const Styles = {
       float: "right"
     },
     header: {
-      backgroundColor: "#28a745"
+      backgroundColor: "#28a745",
+      width: "100%"
+    },
+    popoverBody: {
+      width: "16em"
     },
     popoverButton: {
       width: "5em",
@@ -85,10 +89,12 @@ const Styles = {
     },
     btnEnglish: {
       borderColor: "#222",
-      marginRight: "0.6em"
+      width: "45%",
+      marginRight: "5%"
     },
     btnPolish: {
-      borderColor: "#222"
+      borderColor: "#222",
+      width: "45%"
     }
   },
   Footer: {
