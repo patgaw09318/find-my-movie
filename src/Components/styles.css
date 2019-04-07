@@ -19,6 +19,10 @@
   cursor: pointer;
 }
 
+.desktopHide {
+  display: none !important;
+}
+
 @media screen and (max-width: 600px) {
   footer img {
     width: 8% !important;
@@ -30,6 +34,11 @@
 
   .search-main {
     margin-top: 15% !important;
+    width: 80% !important;
+    margin-left: 0% !important;
+    margin-right: 0% !important;
+    display: block !important;
+    float: left;
   }
 
   .mobileHide {
@@ -38,5 +47,12 @@
 
   .mobileShow {
     display: block !important;
+  }
+
+  .imgExit {
+    margin-top: 13% !important;
+    float: left;
+    display: block;
+    width: 12%;
   }
 }

@@ -77,7 +77,7 @@ class PopoverButton extends React.Component {
             ? this.Translation.t("English")
             : this.Translation.t("Polish")}
         </Button>
-        <div className="mobileShow" style={{ display: "none" }}>
+        <div className="mobileShow desktopHide">
           {this.getEnglishButton()}
           {this.getPolishButton()}
         </div>

@@ -31,7 +31,8 @@ var Config = {
     mailAddress: "patgaw09318@gmail.com",
     mailImage: "images/mail-logo.png",
     movieDbImage: "images/movieDb-logo.svg",
-    movieDbUrl: "https://www.themoviedb.org/"
+    movieDbUrl: "https://www.themoviedb.org/",
+    closeIcon: "images/close-icon.png"
   }
 };
 

@@ -4,6 +4,7 @@ import { asyncContainer, Typeahead } from "react-bootstrap-typeahead";
 import Api from "../tools/api";
 import Styles from "../tools/styles";
 import Translation from "../tools/translation";
+import Config from "../tools/config";
 
 const AsyncTypeahead = asyncContainer(Typeahead);
 const styles = Styles.Search;
@@ -36,21 +37,31 @@ class Search extends Component {
   };
   render() {
     return (
-      <div className="search-main" style={styles.SearchBar}>
-        <AsyncTypeahead
-          isLoading={this.state.isLoading}
-          id="search"
-          minLength={3}
-          placeholder={Translation.t("ChooseMovie")}
-          onSearch={this._handleSearch}
-          options={this.state.options}
-          onChange={value => {
-            let movie = this.state.movies.find(x => x.title === value[0]);
-            this.props.handleOnChange(movie);
-          }}
-          useCache={true}
+      <>
+        <div className="search-main" style={styles.SearchBar}>
+          <AsyncTypeahead
+            className="searchBar"
+            ref="typeahead"
+            isLoading={this.state.isLoading}
+            id="search"
+            minLength={3}
+            placeholder={Translation.t("ChooseMovie")}
+            onSearch={this._handleSearch}
+            options={this.state.options}
+            onChange={value => {
+              let movie = this.state.movies.find(x => x.title === value[0]);
+              this.props.handleOnChange(movie);
+            }}
+            useCache={true}
+          />
+        </div>
+        <img
+          className="imgExit mobileShow desktopHide"
+          src={Config.application.closeIcon}
+          alt="close button"
+          onClick={() => this.refs.typeahead.getInstance().clear()}
         />
-      </div>
+      </>
     );
   }
 }
