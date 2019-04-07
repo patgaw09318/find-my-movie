@@ -57,6 +57,13 @@ class PopoverButton extends React.Component {
         >
           <PopoverHeader style={styles.header}>
             {Translation.t("SelectLanguage")}
+            <div
+              class="btnExit"
+              style={styles.exit}
+              onClick={() => this.setState({ popoverOpen: false })}
+            >
+              x
+            </div>
           </PopoverHeader>
           <PopoverBody className="PopoverBody">
             <button

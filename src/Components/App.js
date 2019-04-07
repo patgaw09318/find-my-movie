@@ -6,7 +6,9 @@ import MovieContainer from "./MovieContainer";
 import Config from "../tools/config";
 import Api from "../tools/api";
 import Translation from "../tools/translation";
+import Styles from "../tools/styles";
 
+const styles = Styles.App;
 const polish = Config.language.polish;
 const english = Config.language.english;
 const defaultValues = Config.movieApi.default;
@@ -63,15 +65,18 @@ class App extends Component {
   render() {
     return (
       <>
-        <NavBar
-          handleChangeLanguage={this.setLanguage}
-          language={this.state.language}
-          Translation={Translation}
-        />
+        <div style={styles.top}>
+          <NavBar
+            handleChangeLanguage={this.setLanguage}
+            language={this.state.language}
+            Translation={Translation}
+          />
+        </div>
         <div className="container container-fluid">
           <Search
             handleOnChange={this.selectMovie}
             language={this.state.language}
+            Translation={Translation}
           />
           <MovieContainer movie={this.state.movie} Translation={Translation} />
         </div>

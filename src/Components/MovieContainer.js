@@ -41,6 +41,7 @@ class MovieContainer extends Component {
       </tr>
     );
   };
+
   render() {
     const { movie, Translation } = this.props;
     const {
@@ -61,6 +62,13 @@ class MovieContainer extends Component {
 
     let genresString =
       genres !== undefined && genres.map(genre => genre.name).join(", ");
+
+    const formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2
+    });
+
     return (
       <div style={styles.main}>
         <div>
@@ -95,12 +103,17 @@ class MovieContainer extends Component {
                   Translation.t("OriginalTitle"),
                   original_title
                 )}
-                {this.addTableRow("Release date:", release_date)}
+                {this.addTableRow(Translation.t("ReleaseDate"), release_date)}
                 {this.addTableRow(Translation.t("Popularity"), popularity)}
-                {this.addTableRow("runtime", runtime)}
-                {this.addTableRow("revenue", revenue)}
-                {this.addTableRow("vote_average", vote_average)}
-                {this.addTableRow("vote_count", vote_count)}
+                {this.addTableRow(Translation.t("Runtime"), runtime + " min")}
+                {this.addTableRow(
+                  Translation.t("Revenue"),
+                  formatter.format(revenue)
+                )}
+                {this.addTableRow(
+                  Translation.t("Vote_average_count"),
+                  `${vote_average}/${vote_count}`
+                )}
                 {this.getLinkRow("homepage", homepage)}
               </tbody>
             </table>

@@ -1,10 +1,18 @@
 const Styles = {
+  App: {
+    top: {
+      position: "fixed",
+      width: "100%",
+      top: "0em",
+      zIndex: "10"
+    }
+  },
   Search: {
     SearchBar: {
       width: "50%",
       position: "center",
       marginLeft: "25%",
-      marginTop: "5%"
+      marginTop: "8%"
     }
   },
   Navbar: {
@@ -47,6 +55,12 @@ const Styles = {
     }
   },
   PopoverButton: {
+    exit: {
+      position: "top",
+      color: ["#fff", true],
+      fontWeight: ["300", true],
+      float: "right"
+    },
     header: {
       backgroundColor: "#28a745"
     },

@@ -3,6 +3,7 @@ import "react-bootstrap-typeahead/css/Typeahead.css";
 import { asyncContainer, Typeahead } from "react-bootstrap-typeahead";
 import Api from "../tools/api";
 import Styles from "../tools/styles";
+import Translation from "../tools/translation";
 
 const AsyncTypeahead = asyncContainer(Typeahead);
 const styles = Styles.Search;
@@ -35,13 +36,12 @@ class Search extends Component {
   };
   render() {
     return (
-      <div>
+      <div style={styles.SearchBar}>
         <AsyncTypeahead
-          style={styles.SearchBar}
           isLoading={this.state.isLoading}
           id="search"
           minLength={3}
-          placeholder="Choose a movie..."
+          placeholder={Translation.t("ChooseMovie")}
           onSearch={this._handleSearch}
           options={this.state.options}
           onChange={value => {
