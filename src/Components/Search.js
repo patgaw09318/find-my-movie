@@ -36,7 +36,7 @@ class Search extends Component {
   };
   render() {
     return (
-      <div style={styles.SearchBar}>
+      <div className="search-main" style={styles.SearchBar}>
         <AsyncTypeahead
           isLoading={this.state.isLoading}
           id="search"

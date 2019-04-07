@@ -1,0 +1,42 @@
+/*file with hover and media styles*/
+.PopoverButton:hover {
+  background-color: #222 !important;
+  color: #28a745 !important;
+}
+
+.btnEnglish:hover {
+  background-color: #222 !important;
+  color: #28a745;
+}
+
+.btnPolish:hover {
+  background-color: #222 !important;
+  color: #28a745;
+}
+
+.btnExit:hover {
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  footer img {
+    width: 8% !important;
+  }
+
+  footer {
+    font-size: 1em;
+  }
+
+  .search-main {
+    margin-top: 15% !important;
+  }
+
+  .mobileHide {
+    display: none !important;
+  }
+
+  .mobileShow {
+    display: block !important;
+  }
+}

@@ -64,6 +64,7 @@ const Styles = {
     }
   },
   PopoverButton: {
+    main: { marginTop: ".4em" },
     exit: {
       position: "top",
       color: ["#fff", true],
@@ -103,7 +104,8 @@ const Styles = {
       width: "2%",
       height: "2%",
       margin: ".8em"
-    }
+    },
+    text: { color: "grey" }
   }
 };
 

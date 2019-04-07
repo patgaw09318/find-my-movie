@@ -1,6 +1,7 @@
 import React from "react";
 import Styles from "../tools/styles";
 import Config from "../tools/config";
+import "./styles.css";
 
 const styles = Styles.Footer;
 
@@ -49,7 +50,7 @@ function Footer() {
           />
         </a>
       </div>
-      <div style={{ color: "grey" }}>@2019 Patryk Gawryszewski</div>
+      <div style={styles.text}>@2019 Patryk Gawryszewski</div>
     </footer>
   );
 }

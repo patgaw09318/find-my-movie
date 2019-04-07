@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Popover, PopoverHeader, PopoverBody } from "reactstrap";
 import Config from "../tools/config";
 import Styles from "../tools/styles";
-import "./PopoverButton.css";
+import "./styles.css";
 const styles = Styles.PopoverButton;
 const polish = Config.language.polish;
 const english = Config.language.english;
@@ -17,6 +17,8 @@ class PopoverButton extends React.Component {
     };
   }
 
+  Translation = this.props.Translation;
+
   toggle() {
     this.setState({
       popoverOpen: !this.state.popoverOpen
@@ -25,28 +27,60 @@ class PopoverButton extends React.Component {
 
   getLanguageButtonStyle = language => {
     return language === this.props.language
-      ? { backgroundColor: "#28a745" }
-      : { backgroundColor: "white" };
+      ? { backgroundColor: "#222", color: "white" }
+      : { backgroundColor: "#28a745" };
   };
 
+  getEnglishButton = () => {
+    return (
+      <button
+        className="btn btnEnglish"
+        style={{
+          ...this.getLanguageButtonStyle(english),
+          ...styles.btnEnglish
+        }}
+        onClick={() => this.props.handleChangeLanguage(english)}
+      >
+        {this.Translation.t("English")}
+      </button>
+    );
+  };
+
+  getPolishButton = () => {
+    return (
+      <button
+        className="btn btnPolish"
+        style={{
+          ...this.getLanguageButtonStyle(polish),
+          ...styles.btnPolish
+        }}
+        onClick={() => this.props.handleChangeLanguage(polish)}
+      >
+        {this.Translation.t("Polish")}
+      </button>
+    );
+  };
   render() {
     let language = this.props.language;
-    let Translation = this.props.Translation;
     return (
-      <div>
+      <div style={styles.main}>
         <Button
           style={{
             ...styles.popoverButton,
             ...(this.state.popoverOpen && styles.popoverOpen)
           }}
           id="PopoverButton"
-          className="PopoverButton"
+          className="PopoverButton mobileHide"
           type="button"
         >
           {language === english
-            ? Translation.t("English")
-            : Translation.t("Polish")}
+            ? this.Translation.t("English")
+            : this.Translation.t("Polish")}
         </Button>
+        <div className="mobileShow" style={{ display: "none" }}>
+          {this.getEnglishButton()}
+          {this.getPolishButton()}
+        </div>
         <Popover
           className="border border-success"
           placement="bottom"
@@ -56,7 +90,7 @@ class PopoverButton extends React.Component {
           hideArrow={true}
         >
           <PopoverHeader style={styles.header}>
-            {Translation.t("SelectLanguage")}
+            {this.Translation.t("SelectLanguage")}
             <div
               className="btnExit"
               style={styles.exit}
@@ -66,26 +100,8 @@ class PopoverButton extends React.Component {
             </div>
           </PopoverHeader>
           <PopoverBody className="PopoverBody">
-            <button
-              className="btn btnEnglish"
-              style={{
-                ...this.getLanguageButtonStyle(english),
-                ...styles.btnEnglish
-              }}
-              onClick={() => this.props.handleChangeLanguage(english)}
-            >
-              {Translation.t("English")}
-            </button>
-            <button
-              className="btn btnPolish"
-              style={{
-                ...this.getLanguageButtonStyle(polish),
-                ...styles.btnPolish
-              }}
-              onClick={() => this.props.handleChangeLanguage(polish)}
-            >
-              {Translation.t("Polish")}
-            </button>
+            {this.getEnglishButton()}
+            {this.getPolishButton()}
           </PopoverBody>
         </Popover>
       </div>
