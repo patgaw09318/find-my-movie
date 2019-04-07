@@ -1,12 +1,20 @@
 # Find-My-Movie
 
-My first simple react app.
-Powered by: <br/>
-Movie database -> [theMovieDB](https://www.themoviedb.org/) <br/>
-Search bar -> [react-bootstrap-typeahead](https://github.com/ericgio/react-bootstrap-typeahead) <br/>
+My first simple reactJS app.<br/>
+
+## Powered by:
+
+Movie database -> [the-movie-db](https://www.themoviedb.org/)
+
+Search bar -> [react-bootstrap-typeahead](https://github.com/ericgio/react-bootstrap-typeahead)
+
 Internationalization -> [react-i18next](https://github.com/i18next/react-i18next)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Demo:
+
+[Find-My-Movie](https://patgaw09318.github.io/find-my-movie)
 
 ## Available Scripts
 
