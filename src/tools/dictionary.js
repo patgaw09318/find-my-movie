@@ -16,6 +16,7 @@ const Dictionary = {
     }
   },
   polish: {
+    /* spell-checker: disable */
     translation: {
       Popularity: "Popularność",
       OriginalTitle: "Tytuł orginalny",

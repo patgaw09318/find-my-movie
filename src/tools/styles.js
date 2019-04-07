@@ -40,7 +40,7 @@ const Styles = {
     },
     subTitle: {
       padding: "1%",
-      color: "white"
+      color: "grey"
     },
     poster: {
       height: "50%",
@@ -88,6 +88,21 @@ const Styles = {
     },
     btnPolish: {
       borderColor: "#222"
+    }
+  },
+  Footer: {
+    main: {
+      color: "white",
+      width: "100%",
+      textAlign: "center",
+      fontSize: ".8em"
+    },
+    image: { width: "2%", height: "2%" },
+    bar: {
+      display: "inline",
+      width: "2%",
+      height: "2%",
+      margin: ".8em"
     }
   }
 };

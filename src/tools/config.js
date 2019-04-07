@@ -22,6 +22,16 @@ var Config = {
     authorization: {
       apiKey
     }
+  },
+  application: {
+    repositoryUrl: "https://github.com/patgaw09318/find-my-movie",
+    repositoryImage: "/images/github-logo.png",
+    linkedInUrl: "https://www.linkedin.com/in/patryk-gawryszewski1993/",
+    linkedInImage: "/images/linkedIn-logo.png",
+    mailAddress: "patgaw09318@gmail.com",
+    mailImage: "/images/mail-logo.png",
+    movieDbImage: "/images/movieDb-logo.svg",
+    movieDbUrl: "https://www.themoviedb.org/"
   }
 };
 

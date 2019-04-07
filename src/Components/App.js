@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Search from "./Search";
 import NavBar from "./NavBar";
 import MovieContainer from "./MovieContainer";
+import Footer from "./Footer";
 import Config from "../tools/config";
 import Api from "../tools/api";
 import Translation from "../tools/translation";
@@ -80,6 +81,7 @@ class App extends Component {
           />
           <MovieContainer movie={this.state.movie} Translation={Translation} />
         </div>
+        <Footer />
       </>
     );
   }
