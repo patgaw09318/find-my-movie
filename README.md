@@ -1,7 +1,7 @@
 # Find-My-Movie
 
 My first simple react app.
-Powered by:
+Powered by: <br/>
 Movie database -> [theMovieDB](https://www.themoviedb.org/) <br/>
 Search bar -> [react-bootstrap-typeahead](https://github.com/ericgio/react-bootstrap-typeahead) <br/>
 Internationalization -> [react-i18next](https://github.com/i18next/react-i18next)
