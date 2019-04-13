@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Search from "./Search";
 import NavBar from "./NavBar";
@@ -14,7 +14,7 @@ const polish = Config.language.polish;
 const english = Config.language.english;
 const defaultValues = Config.movieApi.default;
 
-class App extends Component {
+class App extends React.PureComponent {
   constructor() {
     super();
     this.state = {

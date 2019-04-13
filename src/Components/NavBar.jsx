@@ -1,5 +1,5 @@
 import React from "react";
-import PopoverButton from "./PopoverButton";
+import LanguageMenu from "./LanguageMenu";
 import Styles from "../tools/styles";
 const styles = Styles.Navbar;
 
@@ -10,7 +10,7 @@ function NavBar(props) {
         <h2>Find my Movie</h2>
       </div>
       <div style={styles.languageButton}>
-        <PopoverButton
+        <LanguageMenu
           handleChangeLanguage={props.handleChangeLanguage}
           language={props.language}
           Translation={props.Translation}

@@ -8,7 +8,7 @@ const styles = Styles.PopoverButton;
 const polish = Config.language.polish;
 const english = Config.language.english;
 
-class PopoverButton extends React.Component {
+class LanguageMenu extends React.PureComponent {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -112,7 +112,6 @@ class PopoverButton extends React.Component {
     return (
       this.state.mobileMenuOpen && (
         <div className="mobileMenu mobileShow desktopHide">
-          {this.getLanguageButtons()}
           <img
             src={Config.application.closeIcon}
             alt="close button"
@@ -125,6 +124,8 @@ class PopoverButton extends React.Component {
               }
             }}
           />
+          <h6>{this.Translation.t("SelectLanguage")}</h6>
+          {this.getLanguageButtons()}
         </div>
       )
     );
@@ -169,4 +170,4 @@ class PopoverButton extends React.Component {
   }
 }
 
-export default PopoverButton;
+export default LanguageMenu;

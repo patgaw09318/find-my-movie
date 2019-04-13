@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import { asyncContainer, Typeahead } from "react-bootstrap-typeahead";
 import Api from "../tools/api";
@@ -9,7 +9,7 @@ import Config from "../tools/config";
 const AsyncTypeahead = asyncContainer(Typeahead);
 const styles = Styles.Search;
 
-class Search extends Component {
+class Search extends React.PureComponent {
   constructor() {
     super();
     this.state = {

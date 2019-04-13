@@ -24,17 +24,14 @@
 }
 
 .mobileMenu {
-  position: fixed !important;
+  position: fixed;
   background-color: #28a745;
   padding: 2em;
-  height: 12%;
-
+  height: 100%;
   margin-top: -5%;
-  width: 100%;
-  z-index: 1 !important;
+  width: 70%;
   left: 0;
   top: 0;
-  border-radius: 2em;
 }
 
 @media screen and (max-width: 800px) {
@@ -53,7 +50,7 @@
   }
 
   .search-main {
-    margin-top: 18% !important;
+    margin-top: 20% !important;
     width: 80% !important;
     margin-left: 0% !important;
     display: block;
@@ -69,7 +66,7 @@
   }
 
   .imgExit {
-    margin-top: 18% !important;
+    margin-top: 20% !important;
     float: left;
     display: block;
     width: 12%;
@@ -77,16 +74,19 @@
   .mobileMenuImage {
     float: right;
     padding: 0 !important;
-    margin-top: -3.2em !important;
+    margin-top: -14% !important;
     width: 10%;
-    height: 10%;
   }
   .mobileMenu img {
-    height: 100%;
-    margin: 5%;
+    float: right;
+    top: 0;
+    margin-right: -10%;
+    width: 10%;
   }
   .btnEnglish,
   .btnPolish {
-    width: 36% !important;
+    width: 36%;
+    display: block;
+    margin: 5%;
   }
 }

@@ -4,11 +4,17 @@ import Styles from "../tools/styles";
 const posterUrl = Config.movieApi.urls.poster;
 const styles = Styles.MovieContainer;
 
-const addSingleColumnRow = content => {
+const formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  minimumFractionDigits: 2
+});
+
+const SingleColumnRow = props => {
   return (
     <tr>
       <td colSpan="2">
-        <span style={styles.value}>{content}</span>
+        <span style={styles.value}>{props.content}</span>
         <br />
         <br />
       </td>
@@ -16,14 +22,14 @@ const addSingleColumnRow = content => {
   );
 };
 
-const addLinkRow = (title, link) => {
+const LinkRow = props => {
   return (
-    link !== undefined &&
-    link != null && (
+    props.link !== undefined &&
+    props.link != null && (
       <tr>
         <td colSpan="2">
           <span>
-            <a href={link}>{title}</a>
+            <a href={props.link}>{props.title}</a>
           </span>
         </td>
       </tr>
@@ -31,16 +37,57 @@ const addLinkRow = (title, link) => {
   );
 };
 
-const addTableRow = (title, content) => {
+const TableRow = props => {
   return (
     <tr>
       <td>
-        <span>{title}</span>
+        <span>{props.title}</span>
       </td>
       <td>
-        <span style={styles.value}> {content}</span>
+        <span style={styles.value}> {props.content}</span>
       </td>
     </tr>
+  );
+};
+
+const getProductionCompanies = companies => {
+  return (
+    companies !== undefined &&
+    companies.map(studio =>
+      studio.logo_path !== undefined && studio.logo_path !== null ? (
+        <img
+          key={studio.id}
+          style={styles.productionImage}
+          alt={studio.name}
+          src={posterUrl + studio.logo_path}
+          title={studio.name}
+        />
+      ) : (
+        <div key={studio.id} style={styles.productionText} title={studio.name}>
+          {studio.name}
+        </div>
+      )
+    )
+  );
+};
+
+const getOverview = (Translation, overview) => {
+  return (
+    <>
+      &emsp;&emsp;
+      {overview !== null && overview !== undefined
+        ? overview
+        : Translation.t("NoDescription")}
+    </>
+  );
+};
+
+const Link = props => {
+  let homepage = props.homepage;
+  let title = props.title;
+  return (
+    homepage !== undefined &&
+    homepage !== null && <LinkRow title={title} link={homepage} />
   );
 };
 
@@ -66,11 +113,6 @@ function MovieContainer(props) {
 
   let genresString =
     genres !== undefined && genres.map(genre => genre.name).join(", ");
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2
-  });
 
   return (
     <div style={styles.main}>
@@ -94,53 +136,41 @@ function MovieContainer(props) {
         >
           <table>
             <tbody>
-              <tr>
-                <td colSpan="2">
-                  <span>
-                    &emsp;&emsp;
-                    {overview !== null && overview !== undefined
-                      ? overview
-                      : Translation.t("NoDescription")}
-                  </span>
-                </td>
-              </tr>
-              {addSingleColumnRow(genresString)}
-              {addTableRow(Translation.t("OriginalTitle"), original_title)}
-              {addTableRow(Translation.t("ReleaseDate"), release_date)}
-              {addTableRow(Translation.t("Popularity"), popularity)}
-              {addTableRow(Translation.t("Runtime"), runtime + " min")}
-              {addTableRow(Translation.t("Budget"), formatter.format(budget))}
-              {addTableRow(Translation.t("Revenue"), formatter.format(revenue))}
-              {addTableRow(
-                Translation.t("Vote_average_count"),
-                `${vote_average}/${vote_count}`
-              )}
-              {addSingleColumnRow(
-                production_companies !== undefined &&
-                  production_companies.map(studio =>
-                    studio.logo_path !== undefined &&
-                    studio.logo_path !== null ? (
-                      <img
-                        key={studio.id}
-                        style={styles.productionImage}
-                        alt={studio.name}
-                        src={posterUrl + studio.logo_path}
-                        title={studio.name}
-                      />
-                    ) : (
-                      <div
-                        key={studio.id}
-                        style={styles.productionText}
-                        title={studio.name}
-                      >
-                        {studio.name}
-                      </div>
-                    )
-                  )
-              )}
-              {homepage !== undefined &&
-                homepage !== null &&
-                addLinkRow("homepage", homepage)}
+              <SingleColumnRow content={getOverview(Translation, overview)} />
+              <SingleColumnRow content={genresString} />
+              <TableRow
+                title={Translation.t("OriginalTitle")}
+                content={original_title}
+              />
+              <TableRow
+                title={Translation.t("ReleaseDate")}
+                content={release_date}
+              />
+              <TableRow
+                title={Translation.t("Popularity")}
+                content={popularity}
+              />
+
+              <TableRow
+                title={Translation.t("Runtime")}
+                content={runtime + " min"}
+              />
+              <TableRow
+                title={Translation.t("Budget")}
+                content={formatter.format(budget)}
+              />
+              <TableRow
+                title={Translation.t("Revenue")}
+                content={formatter.format(revenue)}
+              />
+              <TableRow
+                title={Translation.t("Vote_average_count")}
+                content={`${vote_average}/${vote_count}`}
+              />
+              <SingleColumnRow
+                content={getProductionCompanies(production_companies)}
+              />
+              <Link homepage={homepage} title="homepage" />
             </tbody>
           </table>
         </div>
