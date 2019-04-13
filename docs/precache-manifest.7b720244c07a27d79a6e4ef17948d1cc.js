@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "300d4aa33d8270fcb90b",
-    "url": "/find-my-movie/static/css/main.37f62156.chunk.css"
+    "revision": "40f0e0169bc96588278a",
+    "url": "/find-my-movie/static/css/main.d95c41c4.chunk.css"
   },
   {
-    "revision": "300d4aa33d8270fcb90b",
+    "revision": "40f0e0169bc96588278a",
     "url": "/find-my-movie/static/js/main.49eea75a.chunk.js"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/find-my-movie/static/js/2.f658427f.chunk.js"
   },
   {
-    "revision": "f9f302b9649b8c416dbe288c7c796d6c",
+    "revision": "25fa29695557c4cdee9923baeaa28bdb",
     "url": "/find-my-movie/index.html"
   }
 ];
