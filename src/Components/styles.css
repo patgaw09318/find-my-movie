@@ -59,7 +59,7 @@
   }
 
   .mobileHide {
-    display: none !important;
+    display: none;
   }
 
   .mobileShow {
@@ -67,9 +67,8 @@
   }
 
   .imgExit {
-    margin-top: 20% !important;
+    margin-top: 20%;
     float: left;
-    display: block;
     width: 12%;
   }
   .mobileMenuImage {

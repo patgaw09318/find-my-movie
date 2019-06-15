@@ -130,10 +130,7 @@ function MovieContainer(props) {
           src={poster_path != null ? posterUrl + poster_path : null}
           alt="poster not loaded!"
         />
-        <div
-          className="text-justify col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
-          style={styles.body}
-        >
+        <div className="text-justify col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <table>
             <tbody>
               <SingleColumnRow content={getOverview(Translation, overview)} />

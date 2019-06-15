@@ -5,9 +5,9 @@ const styles = Styles.Navbar;
 
 function NavBar(props) {
   return (
-    <nav className="bg-success" styles={styles.main}>
-      <div className="navbar-brand" styles={styles.title}>
-        <h2>Find my Movie</h2>
+    <nav className="bg-success">
+      <div className="navbar-brand">
+        <h2 style={styles.title}>Find my Movie</h2>
       </div>
       <div style={styles.languageButton}>
         <LanguageMenu

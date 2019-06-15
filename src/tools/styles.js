@@ -3,31 +3,26 @@ const Styles = {
     top: {
       position: "fixed",
       width: "100%",
-      top: "0em",
-      zIndex: "10"
+      top: "0",
+      left: "0",
+      zIndex: "1"
     }
   },
   Search: {
     SearchBar: {
-      width: "50%",
+      width: "60%",
       position: "center",
-      marginLeft: "25%",
+      marginLeft: "20%",
       marginTop: "10%"
     }
   },
   Navbar: {
-    main: {
-      width: "100%",
-      padding: "1%"
+    title: {
+      marginLeft: ".6em"
     },
     languageButton: {
       float: "right",
-      marginRight: "1em",
-      marginTop: "0.5%"
-    },
-    title: {
-      color: ["#222", true],
-      padding: "2%"
+      marginRight: "1em"
     }
   },
   MovieContainer: {
@@ -47,16 +42,12 @@ const Styles = {
       width: "50%",
       borderRadius: "1.6em"
     },
-    body: {
-      padding: "1%"
-    },
     value: {
       color: "#28a745"
     },
     productionImage: {
       width: "30%",
-      display: "initial",
-      padding: "1em"
+      padding: "0.5em"
     },
     productionText: {
       display: "inline",
