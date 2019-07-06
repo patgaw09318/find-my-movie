@@ -23,7 +23,7 @@ function NavBar(props) {
 
 NavBar.propTypes = {
   handleChangeLanguage: PropTypes.func.isRequired,
-  language: PropTypes.string.isRequired,
+  language: PropTypes.string,
   Translation: PropTypes.object.isRequired
 };
 export default NavBar;
