@@ -90,10 +90,14 @@ const Styles = {
   },
   Footer: {
     main: {
+      backgroundColor: "#222",
+      zIndex: "1",
       color: "white",
       width: "100%",
       textAlign: "center",
-      fontSize: ".8em"
+      fontSize: ".8em",
+      bottom: "0",
+      position: "fixed"
     },
     image: { width: "2%", height: "2%" },
     bar: {
