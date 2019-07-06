@@ -4,6 +4,7 @@ import { Button, Popover, PopoverHeader, PopoverBody } from "reactstrap";
 import Config from "../tools/config";
 import Styles from "../tools/styles";
 import "./styles.css";
+import PropTypes from "prop-types";
 const styles = Styles.PopoverButton;
 const polish = Config.language.polish;
 const english = Config.language.english;
@@ -169,5 +170,11 @@ class LanguageMenu extends React.PureComponent {
     );
   }
 }
+
+LanguageMenu.propTypes = {
+  handleChangeLanguage: PropTypes.func.isRequired,
+  Translation: PropTypes.object.isRequired,
+  language: PropTypes.string.isRequired
+};
 
 export default LanguageMenu;

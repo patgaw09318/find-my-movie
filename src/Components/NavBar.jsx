@@ -1,6 +1,7 @@
 import React from "react";
 import LanguageMenu from "./LanguageMenu";
 import Styles from "../tools/styles";
+import PropTypes from "prop-types";
 const styles = Styles.Navbar;
 
 function NavBar(props) {
@@ -20,4 +21,9 @@ function NavBar(props) {
   );
 }
 
+NavBar.propTypes = {
+  handleChangeLanguage: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired,
+  Translation: PropTypes.object.isRequired
+};
 export default NavBar;

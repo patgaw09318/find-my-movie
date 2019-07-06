@@ -5,6 +5,8 @@ import Api from "../tools/api";
 import Styles from "../tools/styles";
 import Translation from "../tools/translation";
 import Config from "../tools/config";
+import PropTypes from "prop-types";
+import { stringify } from "querystring";
 
 const AsyncTypeahead = asyncContainer(Typeahead);
 const styles = Styles.Search;
@@ -65,5 +67,10 @@ class Search extends React.PureComponent {
     );
   }
 }
+
+Search.propTypes = {
+  handleOnChange: PropTypes.func.isRequired,
+  language: stringify.isRequired
+};
 
 export default Search;
